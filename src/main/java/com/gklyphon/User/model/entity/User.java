@@ -1,0 +1,52 @@
+package com.gklyphon.User.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
+@Entity
+@Table(name = "users",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames =
+                {
+                        "email", "username"
+                }
+        ))
+public class User {
+
+    public User() {
+        authorities = new HashSet<>();
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String email;
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private Date birthdate;
+    private String phoneNumber;
+    private String profileImage;
+    private Boolean status;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    Set<Authority> authorities;
+
+    @ManyToOne
+    private Country country;
+
+    private LocalDateTime statusChangeAt;
+    private LocalDate createAt;
+    private LocalDate updateAt;
+    private LocalDateTime lastLogin;
+}
