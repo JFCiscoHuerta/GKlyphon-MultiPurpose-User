@@ -1,7 +1,9 @@
 package com.gklyphon.User.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,6 +20,7 @@ import java.util.Set;
                         "email", "username"
                 }
         ))
+@AllArgsConstructor
 public class User {
 
     public User() {
@@ -45,8 +48,8 @@ public class User {
     @ManyToOne
     private Country country;
 
-    private LocalDateTime statusChangeAt;
+    private LocalDate statusChangeAt;
     private LocalDate createAt;
     private LocalDate updateAt;
-    private LocalDateTime lastLogin;
+    private LocalDate lastLogin;
 }

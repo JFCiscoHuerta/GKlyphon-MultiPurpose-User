@@ -1,7 +1,9 @@
 package com.gklyphon.User.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -13,6 +15,9 @@ import java.time.LocalDate;
                     "authority", "user_id"
             }
     ))
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Authority {
 
     @Id
@@ -25,4 +30,10 @@ public class Authority {
 
     private LocalDate createAt;
     private LocalDate updateAt;
+
+    public Authority(Long id, String authority, User user) {
+        this.id = id;
+        this.authority = authority;
+        this.user = user;
+    }
 }
