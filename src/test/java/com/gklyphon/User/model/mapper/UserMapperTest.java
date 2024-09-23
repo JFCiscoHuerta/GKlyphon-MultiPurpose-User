@@ -68,7 +68,7 @@ class UserMapperTest {
     @Test
     void shouldMapUsersToUsersDTO() {
         when(userMapper.toUsersDTO(any(List.class))).thenReturn(userDTOS);
-        List<UserDTO> userDTOSMocked = userMapper.toUsersDTO(userDTOS);
+        List<UserDTO> userDTOSMocked = userMapper.toUsersDTO(users);
         verify(userMapper).toUsersDTO(any(List.class));
         assertEquals(users.getFirst().getId(), userDTOSMocked.getFirst().getId());
     }

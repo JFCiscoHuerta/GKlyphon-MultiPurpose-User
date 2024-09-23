@@ -12,7 +12,7 @@ import java.util.List;
 public interface IUserMapper {
 
     UserDTO toUserDTO(User user);
-    List<UserDTO> toUsersDTO(List<UserDTO> userDTOS);
+    List<UserDTO> toUsersDTO(List<User> user);
 
     @InheritInverseConfiguration
     User toUser(UserDTO userDTO);
