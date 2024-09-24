@@ -15,10 +15,13 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    private IUserRepository userRepository;
-    @Autowired
-    private IUserMapper userMapper;
+    private final IUserRepository userRepository;
+    private final IUserMapper userMapper;
+
+    public UserService(IUserMapper userMapper, IUserRepository userRepository) {
+        this.userMapper = userMapper;
+        this.userRepository = userRepository;
+    }
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
