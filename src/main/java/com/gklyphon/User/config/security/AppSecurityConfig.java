@@ -18,13 +18,12 @@ import java.util.Map;
 @Configuration
 public class AppSecurityConfig {
 
-    private AppSecurityData appSecurityData;
-
-    private String pbkdf2Secret;
+    private final AppSecurityData appSecurityData;
+    private final String pbkdf2Secret;
 
     public AppSecurityConfig(AppSecurityData appSecurityData) {
         this.appSecurityData = appSecurityData;
-        pbkdf2Secret = appSecurityData.getPbkdf2Secret();
+        this.pbkdf2Secret = appSecurityData.getPbkdf2Secret();
     }
 
     @Bean
