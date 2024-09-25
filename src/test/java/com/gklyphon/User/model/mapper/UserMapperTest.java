@@ -1,3 +1,21 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2024 JFCiscoHuerta
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package com.gklyphon.User.model.mapper;
 
 import com.gklyphon.User.model.dto.UserDTO;
@@ -10,18 +28,26 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
+/**
+ * Unit tests for {@link IUserMapper}, verifying the correct mapping
+ * between User, UserDTO, and UserRequestDTO objects.
+ *
+ * <p>This test class ensures that the mapper correctly transforms
+ * data between entity and DTO representations, which is critical for
+ * the application's data flow.</p>
+ *
+ * <p>Created on: 2024-09-24</p>
+ * @author JFCiscoHuerta
+ */
 @ExtendWith(MockitoExtension.class)
 class UserMapperTest {
 
@@ -34,6 +60,14 @@ class UserMapperTest {
     List<User> users;
     List<UserDTO> userDTOS;
 
+    /**
+     * Initializes test data before each test method.
+     *
+     * <p>This method sets up instances of User, UserDTO, UserRequestDTO,
+     * and lists of Users and UserDTOs needed for the tests. It ensures
+     * a clean state for each test, avoiding shared state issues.</p>
+     *
+     */
     @BeforeEach
     void setUp() {
         user = new User(1L, "user@gmail.com","user", "password", "Javier", "Gonzalez",
@@ -56,6 +90,13 @@ class UserMapperTest {
                 new Date(), "1234567890", "path", new Country(1L, "Mexico", "MX")));
     }
 
+    /**
+     * Tests the mapping of a User to UserDTO.
+     *
+     * <p>This test verifies that the mapper converts a User object into
+     * a UserDTO correctly. It ensures that the mapped UserDTO has the
+     * same email as the original User.</p>
+     */
     @Test
     void shouldMapUserToUserDTO() {
         when(userMapper.toUserDTO(any(User.class))).thenReturn(userDTO);
@@ -65,6 +106,14 @@ class UserMapperTest {
         assertEquals(user.getEmail(),userDTOMocked.getEmail());
     }
 
+    /**
+     * Tests the mapping of a List of Users to a List of UserDTOs.
+     *
+     * <p>This test ensures that the mapper correctly converts a list of
+     * User entities into a list of UserDTOs. It checks that the ID of
+     * the first User in the original list matches the ID of the first
+     * UserDTO in the mapped list.</p>
+     */
     @Test
     void shouldMapUsersToUsersDTO() {
         when(userMapper.toUsersDTO(any(List.class))).thenReturn(userDTOS);
@@ -73,6 +122,14 @@ class UserMapperTest {
         assertEquals(users.getFirst().getId(), userDTOSMocked.getFirst().getId());
     }
 
+
+    /**
+     * Tests the mapping of UserDTO to User.
+     *
+     * <p>This test verifies that the mapper correctly converts a UserDTO
+     * back into a User entity. It ensures that the email of the mapped
+     * User matches the original UserDTO.</p>
+     */
     @Test
     void shouldMapUserDTOToUser() {
         when(userMapper.toUser(any(UserDTO.class))).thenReturn(user);
@@ -81,6 +138,13 @@ class UserMapperTest {
         assertEquals(userDTO.getEmail(), userMocked.getEmail());
     }
 
+    /**
+     * Tests the mapping of UserRequestDTO to User.
+     *
+     * <p>This test verifies that the mapper correctly converts a UserRequestDTO
+     * into a User entity. It ensures that the username of the mapped User
+     * matches the original UserRequestDTO.</p>
+     */
     @Test
     void shouldMapUserRequestDTOToUser() {
         when(userMapper.toUserFromUserRequestDTO(any(UserRequestDTO.class))).thenReturn(user);
