@@ -72,7 +72,7 @@ public class AppSecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/v1/user/all-users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/v1/user/{id}").hasAnyRole("USER", "ADMIN")
                 .requestMatchers(HttpMethod.POST, "/v1/user/toggle-user/**").hasRole("ADMIN")
-                .anyRequest().denyAll();
+                .anyRequest().permitAll();
     }
 
 }

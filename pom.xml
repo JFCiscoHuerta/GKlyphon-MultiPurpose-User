@@ -37,6 +37,7 @@
 		<mapstruct.version>1.6.0</mapstruct.version>
 		<lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
 		<maven-compiler.version>3.13.0</maven-compiler.version>
+		<openapi-mvc-ui.version>2.3.0</openapi-mvc-ui.version>
 	</properties>
 
 	<dependencies>
@@ -100,6 +101,11 @@
 			<artifactId>mapstruct-processor</artifactId>
 			<version>${mapstruct.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${openapi-mvc-ui.version}</version>
 		</dependency>
 	</dependencies>
 

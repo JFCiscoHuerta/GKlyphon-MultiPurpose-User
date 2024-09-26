@@ -122,7 +122,6 @@ class UserMapperTest {
         assertEquals(users.getFirst().getId(), userDTOSMocked.getFirst().getId());
     }
 
-
     /**
      * Tests the mapping of UserDTO to User.
      *
