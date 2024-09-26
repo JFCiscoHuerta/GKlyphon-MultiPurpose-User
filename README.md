@@ -9,6 +9,7 @@
 
 ## Setup
 
+
 ### Prerequisites
 Ensure you have the following installed:
 - *Java 22*
@@ -16,12 +17,14 @@ Ensure you have the following installed:
 - PostgreSQL (or any configured database)
 - Redis
 
+
 ### Environment Variables
 The following environment variables should be configured for the application to work correctly:
 
 | Variable           | Description                              |
 |--------------------|------------------------------------------|
 | PBKDF2_SECRET    | 256-bit secret key for PBKDF2 password encoding |
+
 
 ### PBKDF2 Secret Key Configuration
 
@@ -31,9 +34,27 @@ For security, you need to generate a *256-bit secret key* to be used with PBKDF2
 
 After generating the key, set it as an environment variable:
 
-bash
+```bash
 export PBKDF2_SECRET=your-256-bit-key
+```
+
+
+### Accessing the API Documentation
+To access the API documentation via Swagger, make sure to run the application with the dev profile:
+
+```bash
+./mvnw spring-boot:run -Dspring.profiles.active=dev
+```
+
+
+Once the application is running, you can view the Swagger documentation at:
+
+```bash
+http://{server}:{port}/swagger-ui/index.html
+```
+
+> **Note:** Ensure that you are running the application with the `dev` profile to access the Swagger documentation.
 
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for detail
+This project is licensed under the  Apache 2.0 license - see the LICENSE file for detail
