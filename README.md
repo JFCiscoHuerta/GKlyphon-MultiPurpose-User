@@ -1,4 +1,4 @@
-# GKlyphon-Multiporpuse-User
+# GKlyphon-Multipurpose-User
 
 ![Java](https://img.shields.io/badge/Java-22-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3-green)
