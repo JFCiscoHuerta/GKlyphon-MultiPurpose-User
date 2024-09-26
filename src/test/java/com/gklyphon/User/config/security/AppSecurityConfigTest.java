@@ -73,4 +73,5 @@ class AppSecurityConfigTest {
         String encodedPasswd2 = passwordEncoder.encode(TEST_PASSWORD);
         assertNotEquals(encodedPasswd1, encodedPasswd2, "Encoded passwords should not be equal for the same input");
     }
+    
 }

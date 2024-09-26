@@ -94,5 +94,4 @@ public class UserService {
         log.info("Status");
         return userMapper.toUserDTO(userRepository.save(user));
     }
-
 }
